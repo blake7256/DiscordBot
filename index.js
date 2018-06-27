@@ -11,6 +11,8 @@ bot.on("ready", async () => {
     bot.user.setActivity("Dolphin");
 });
 
+let toilet = 'down';
+
 bot.on("message", async message => {
 
     if (message.author.bot) {
@@ -61,11 +63,8 @@ bot.on("message", async message => {
             .setColor("#23272a")
             .setThumbnail(Sicon)
             .addField("Server name: ", message.guild.name)
-
             .addField("Created on: ", message.guild.createdAt)
-
             .addField("You joined: ", message.member.joinedAt)
-
             .addField("Total members: ", message.guild.memberCount);
 
         return message.channel.send(serverEmbed);
@@ -85,47 +84,31 @@ bot.on("message", async message => {
             .addField("Max Damage: ", "4%");
 
         return [message.channel.send(foxJab), message.channel.send({ file: "./images/foxjab.gif" })];
-        
     }
-    
-    
-    if (cmd === `${prefix}toilet`) {
+
+    if (message.content.startsWith("!toilet")) {
         let sender = message.author;
-        let toiletEmbed3 = new Discord.RichEmbed()
-            .setDescription(sender + " fell into the toilet!")
-            .setThumbnail("http://www.wtfcaptcha.com/wp-content/uploads/2010/03/funny-picture-photo-child-toilet-massdistraction-pic.jpg");
-            
+
+
         let toiletEmbed = new Discord.RichEmbed()
-            .setDescription(sender + " flipped the toilet seat up!")
+            .setDescription(sender + " flipped the toilet seat " + toilet + "!")
             .setThumbnail("https://image.shutterstock.com/image-vector/white-contemporary-toilet-seat-directional-260nw-107301602.jpg");
 
         let toiletEmbed2 = new Discord.RichEmbed()
-            .setDescription(sender + " flipped the toilet seat down!")
+            .setDescription(sender + " flipped the toilet seat " + toilet + "!")
             .setThumbnail("https://thumb9.shutterstock.com/display_pic_with_logo/137608/107301608/stock-vector-a-white-contemporary-toilet-with-the-seat-down-and-a-directional-arrow-put-the-seat-down-107301608.jpg");
-        
-            function getRandomInt(max){
-                return Math.floor(Math.random() * Math.floor(max));
-            }
 
-        if(getRandomInt(3) === 0){
-            return message.channel.send(toiletEmbed);
-        } else if(getRandomInt(3) === 1){
-            return message.channel.send(toiletEmbed2);
-        } else{
-            return message.channel.send(toiletEmbed3);
+        if (toilet == 'down') {
+            toilet = 'up';
+            message.channel.send(toiletEmbed2);
+        } else
+
+        if (toilet == 'up') {
+                toilet = 'down';
+                message.channel.send(toiletEmbed);
         }
-        
     }
-
-    function change(){
-        b ^= true;
-    }
-
-    
-
 
 });
-
-
 
 bot.login(botconfig.token);
