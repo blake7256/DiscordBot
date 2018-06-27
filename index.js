@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
 
 
+
 bot.on("ready", async () => {
     //displays in command line
     console.log(`${bot.user.username} is online!`);
@@ -53,7 +54,7 @@ bot.on("message", async message => {
     }
 
     if (cmd === `${prefix}serverinfo`) {
-        
+
         let Sicon = message.guild.iconURL;
         let serverEmbed = new Discord.RichEmbed()
             .setDescription("Server Information")
@@ -67,7 +68,7 @@ bot.on("message", async message => {
 
             .addField("Total members: ", message.guild.memberCount);
 
-        message.channel.send(serverEmbed, { files: ["./images/foxjab.gif"] });
+        return message.channel.send(serverEmbed);
 
     }
 
@@ -84,9 +85,44 @@ bot.on("message", async message => {
             .addField("Max Damage: ", "4%");
 
         return [message.channel.send(foxJab), message.channel.send({ file: "./images/foxjab.gif" })];
-        /* return message.channel.send( "gif:", { files: ["./images/foxjab.gif"] }); */
-        /*message.channel.send({ files: ["./images/foxjab.gif"] });*/
+        
     }
+    
+    
+    if (cmd === `${prefix}toilet`) {
+        let sender = message.author;
+        let toiletEmbed3 = new Discord.RichEmbed()
+            .setDescription(sender + " fell into the toilet!")
+            .setThumbnail("http://www.wtfcaptcha.com/wp-content/uploads/2010/03/funny-picture-photo-child-toilet-massdistraction-pic.jpg");
+            
+        let toiletEmbed = new Discord.RichEmbed()
+            .setDescription(sender + " flipped the toilet seat up!")
+            .setThumbnail("https://image.shutterstock.com/image-vector/white-contemporary-toilet-seat-directional-260nw-107301602.jpg");
+
+        let toiletEmbed2 = new Discord.RichEmbed()
+            .setDescription(sender + " flipped the toilet seat down!")
+            .setThumbnail("https://thumb9.shutterstock.com/display_pic_with_logo/137608/107301608/stock-vector-a-white-contemporary-toilet-with-the-seat-down-and-a-directional-arrow-put-the-seat-down-107301608.jpg");
+        
+            function getRandomInt(max){
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+        if(getRandomInt(3) === 0){
+            return message.channel.send(toiletEmbed);
+        } else if(getRandomInt(3) === 1){
+            return message.channel.send(toiletEmbed2);
+        } else{
+            return message.channel.send(toiletEmbed3);
+        }
+        
+    }
+
+    function change(){
+        b ^= true;
+    }
+
+    
+
 
 });
 
