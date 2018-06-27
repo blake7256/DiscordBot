@@ -2,7 +2,6 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
 
-//changes username to Sempai
 bot.on("ready", () => {
     bot.user.setUsername("Sempai");
 });
@@ -16,8 +15,136 @@ bot.on("ready", async () => {
     bot.user.setActivity("Dolphin");
 });
 
-let toilet = 'down';
+/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\   
 
+var foxFrameData = {
+    "foxjab": {
+        totalFrames: "17",
+        IASA: "16",
+        hitFrames: "2-3",
+        minDamage: "2%",
+        maxDamage: "4%",
+    },
+    "foxftilt": {
+        totalFrames: "26",
+        hitFrames: "5-8"
+    },
+    "foxdtilt": {
+        totalFrames: "29",
+        hitFrames: "7-9",
+        IASA: "28"
+    },
+    "foxuptilt": {
+        totalFrames: "24",
+        hitFrames: "5-11",
+        IASA: "23"
+    },
+    "foxdashattack": {
+        totalFrames: "39",
+        hitFrames: "4-17",
+        IASA: "36"
+    },
+    "foxfsmash": {
+        totalFrames: "39",
+        hitFrames: "12-22",
+        chargeFrame: "7"
+    },
+    "foxupsmash": {
+        totalFrames: "41",
+        hitFrames: "7-17",
+        headInvincible: "1-9",
+        chargeFrame: "2"
+    },
+    "foxdsmash": {
+        totalFrames: "49",
+        hitFrames: "6-10",
+        legsInvincible: "6",
+        IASA: "46",
+        chargeFrame: "2",
+    },
+    "foxnair": {
+        totalFrames: "49",
+        hitFrames: "4-31",
+        IASA: "42",
+        autoCancel: "<3 37>",
+        landlag: "15",
+        lcanceled: "7"
+    },
+    "foxupair": {
+        totalFrames: "39",
+        hitFrames: "8-9, 11-14",
+        IASA: "36",
+        autoCancel: "<7 26>",
+        landlag: "18",
+        lcanceled: "9"
+    },
+    "foxbackair": {
+        totalFrames: "39",
+        hitFrames: "4-19",
+        IASA: "38",
+        autoCancel: "<3 24>",
+        landlag: "20",
+        lcanceled: "10"
+    },
+    "foxdownair": {
+        totalFrames: "49",
+        hitFrames: "5-6, 8-9, 11-12, 14-15, 17-18, 20-21, 23-24",
+        autoCancel: "<4 31>",
+        landlag: "18",
+        lcanceled: "9"
+    },
+    "foxforwardair": {
+        totalFrames: "59",
+        hitFrames: "6-8, 16-18, 24-26, 33-35, 43-45",
+        IASA: "53",
+        autoCancel: "<5 49>",
+        landlag: "22",
+        lcanceled: "11"
+    },
+    "foxgrab": {
+        totalFrames: "30",
+        grab: "7-8"
+    },
+    "foxshine": {
+        totalFrames: "39 (or more)",
+        hitFrames: "1",
+        reflects: "4-21 or release+1",
+        lagUponRelease: "19",
+        reflectionLag: "19",
+    },
+    "foxsideb": {
+        totalFrames: "63",
+        foxStartsMovingAway: "21",
+        hitFrames: "22-25",
+        timeToPressB: "20-24",
+        canGrabEdgeAsEarlyAs: "29",
+        landlag: "20",
+        landFallSpecialLag: "3"
+    },
+    "foxfirefox": {
+        totalFrames: "92",
+        hitFrames: "20, 22, 24, 26, 28, 30, 32, 43-72",
+        whenToAim: "42",
+        canGrabEdgeDuringFirst: "16",
+        canGrabEdgeDuringMoving: "73",
+        landlag: "6",
+        landFallSpecialLag: "3"
+    },
+    "foxspotdodge": {
+        totalFrames: "22",
+        involnerable: "invulnerable 2-15 out of 22"
+    }
+};
+
+/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+
+let toilet = 'down';
 bot.on("message", async message => {
 
     if (message.author.bot) {
@@ -47,7 +174,6 @@ bot.on("message", async message => {
     }
 
     if (cmd === `${prefix}commands`) {
-
         let botIcon = bot.user.displayAvatarURL;
         let botEmbed = new Discord.RichEmbed()
             .setDescription("Commands")
@@ -56,12 +182,10 @@ bot.on("message", async message => {
             .addField("!noobdog", "displays: 'noob dog.'")
             .addField("!gamers", "They targeted gamers.")
             .addField("!tim", "tim");
-
         return message.channel.send(botEmbed);
     }
 
     if (cmd === `${prefix}serverinfo`) {
-
         let Sicon = message.guild.iconURL;
         let serverEmbed = new Discord.RichEmbed()
             .setDescription("Server Information")
@@ -71,29 +195,229 @@ bot.on("message", async message => {
             .addField("Created on: ", message.guild.createdAt)
             .addField("You joined: ", message.member.joinedAt)
             .addField("Total members: ", message.guild.memberCount);
-
         return message.channel.send(serverEmbed);
-
     }
 
     if (cmd === `${prefix}foxjab`) {
-
         let foxJab = new Discord.RichEmbed()
             .setDescription("Fox Jab Frame Data")
             .setColor("#23272a")
             .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
-            .addField("Total Frames: ", "17")
-            .addField("IASA: ", "16")
-            .addField("Hit Frames: ", "2-3")
-            .addField("Min Damage: ", "2%")
-            .addField("Max Damage: ", "4%");
-
+            .addField("Total Frames: ", foxFrameData.foxjab.totalFrames)
+            .addField("IASA: ", foxFrameData.foxjab.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxjab.hitFrames)
+            .addField("Min Damage: ", foxFrameData.foxjab.minDamage)
+            .addField("Max Damage: ", foxFrameData.foxjab.maxDamage);
         return [message.channel.send(foxJab), message.channel.send({ file: "./images/foxjab.gif" })];
     }
 
-    if (message.content.startsWith("!toilet")) {
+    if (cmd === `${prefix}foxftilt`) {
+        let foxftilt = new Discord.RichEmbed()
+            .setDescription("Fox FTilt Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxftilt.totalFrames)
+            .addField("Hit Frames: ", foxFrameData.foxftilt.hitFrames);
+        return [message.channel.send(foxftilt), message.channel.send({ file: "./images/foxftilt.gif" })];
+    }
+
+    if (cmd === `${prefix}foxdtilt`) {
+        let foxdtilt = new Discord.RichEmbed()
+            .setDescription("Fox DTilt Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxdtilt.totalFrames)
+            .addField("IASA: ", foxFrameData.foxdtilt.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxdtilt.hitFrames);
+        return [message.channel.send(foxdtilt), message.channel.send({ file: "./images/foxdtilt.gif" })];
+    }
+
+    if (cmd === `${prefix}foxuptilt`) {
+        let foxuptilt = new Discord.RichEmbed()
+            .setDescription("Fox Uptilt Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxuptilt.totalFrames)
+            .addField("IASA: ", foxFrameData.foxuptilt.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxuptilt.hitFrames);
+        return [message.channel.send(foxuptilt), message.channel.send({ file: "./images/foxuptilt.gif" })];
+    }
+
+    if (cmd === `${prefix}foxdashattack`) {
+        let foxdashattack = new Discord.RichEmbed()
+            .setDescription("Fox Dash Attack Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxdashattack.totalFrames)
+            .addField("IASA: ", foxFrameData.foxdashattack.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxdashattack.hitFrames);
+        return [message.channel.send(foxdashattack), message.channel.send({ file: "./images/foxdashattack.gif" })];
+    }
+
+    if (cmd === `${prefix}foxupsmash`) {
+        let foxupsmash = new Discord.RichEmbed()
+            .setDescription("Fox Up Smash Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxjab.totalFrames)
+            .addField("IASA: ", foxFrameData.foxupsmash.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxupsmash.hitFrames)
+            .addField("Head invincible (but not snout): ", foxFrameData.foxupsmash.headInvincible)
+            .addField("Charge frame: ", foxFrameData.foxupsmash.chargeFrame);
+        return [message.channel.send(foxupsmash), message.channel.send({ file: "./images/foxupsmash.gif" })];
+    }
+
+    if (cmd === `${prefix}foxdsmash`) {
+        let foxdsmash = new Discord.RichEmbed()
+            .setDescription("Fox Down Smash Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxdsmash.totalFrames)
+            .addField("IASA: ", foxFrameData.foxdsmash.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxdsmash.hitFrames)
+            .addField("Legs Invincible: ", foxFrameData.foxdsmash.legsInvincible)
+            .addField("Charge frame: ", foxFrameData.foxdsmash.chargeFrame);
+        return [message.channel.send(foxdsmash), message.channel.send({ file: "./images/foxdsmash.gif" })];
+    }
+
+    if (cmd === `${prefix}foxnair`) {
+        let foxnair = new Discord.RichEmbed()
+            .setDescription("Fox Nair Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxnair.totalFrames)
+            .addField("IASA: ", foxFrameData.foxnair.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxnair.hitFrames)
+            .addField("Auto cancel: ", foxFrameData.foxnair.autoCancel)
+            .addField("Landlag: ", foxFrameData.foxnair.landlag)
+            .addField("Lcanceled: ", foxFrameData.foxnair.lcanceled);
+        return [message.channel.send(foxnair), message.channel.send({ file: "./images/foxnair.gif" })];
+    }
+
+    if (cmd === `${prefix}foxupair`) {
+        let foxupair = new Discord.RichEmbed()
+            .setDescription("Fox Up Air Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxupair.totalFrames)
+            .addField("IASA: ", foxFrameData.foxupair.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxupair.hitFrames)
+            .addField("Auto cancel: ", foxFrameData.foxupair.autoCancel)
+            .addField("Landlag: ", foxFrameData.foxupair.landlag)
+            .addField("Lcanceled: ", foxFrameData.foxupair.lcanceled);
+        return [message.channel.send(foxupair), message.channel.send({ file: "./images/foxupair.gif" })];
+    }
+
+    if (cmd === `${prefix}foxbair`) {
+        let foxbackair = new Discord.RichEmbed()
+            .setDescription("Fox Back Air Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxbackair.totalFrames)
+            .addField("IASA: ", foxFrameData.foxbackair.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxbackair.hitFrames)
+            .addField("Auto cancel: ", foxFrameData.foxbackair.autoCancel)
+            .addField("Landlag: ", foxFrameData.foxbackair.landlag)
+            .addField("Lcanceled: ", foxFrameData.foxbackair.lcanceled);
+        return [message.channel.send(foxbackair), message.channel.send({ file: "./images/foxbair.gif" })];
+    }
+
+    if (cmd === `${prefix}foxdair`) {
+        let foxdownair = new Discord.RichEmbed()
+            .setDescription("Fox Down Air Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxdownair.totalFrames)
+            .addField("IASA: ", foxFrameData.foxdownair.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxdownair.hitFrames)
+            .addField("Auto cancel: ", foxFrameData.foxdownair.autoCancel)
+            .addField("Landlag: ", foxFrameData.foxdownair.landlag)
+            .addField("Lcanceled: ", foxFrameData.foxdownair.lcanceled);
+        return [message.channel.send(foxdownair), message.channel.send({ file: "./images/foxdair.gif" })];
+    }
+
+    if (cmd === `${prefix}foxfair`) {
+        let foxfair = new Discord.RichEmbed()
+            .setDescription("Fox Forward Air Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxforwardair.totalFrames)
+            .addField("IASA: ", foxFrameData.foxforwardair.IASA)
+            .addField("Hit Frames: ", foxFrameData.foxforwardair.hitFrames)
+            .addField("Auto cancel: ", foxFrameData.foxforwardair.autoCancel)
+            .addField("Landlag: ", foxFrameData.foxforwardair.landlag)
+            .addField("Lcanceled: ", foxFrameData.foxforwardair.lcanceled);
+        return [message.channel.send(foxfair), message.channel.send({ file: "./images/foxfair.gif" })];
+    }
+
+    if (cmd === `${prefix}foxgrab`) {
+        let foxgrab = new Discord.RichEmbed()
+            .setDescription("Fox Grab Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxgrab.totalFrames)
+            .addField("Grab: ", foxFrameData.foxgrab.grab);
+        return [message.channel.send(foxgrab), message.channel.send({ file: "./images/foxgrab.gif" })];
+    }
+
+    if (cmd === `${prefix}foxshine`) {
+        let foxshine = new Discord.RichEmbed()
+            .setDescription("Fox Shine Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxshine.totalFrames)
+            .addField("Reflects: ", foxFrameData.foxshine.reflects)
+            .addField("Hit Frames: ", foxFrameData.foxshine.hitFrames)
+            .addField("Lag Upon Release: ", foxFrameData.foxshine.lagUponRelease)
+            .addField("Reflection lag: ", foxFrameData.foxshine.reflectionLag);
+
+        return [message.channel.send(foxshine), message.channel.send({ file: "./images/foxshine.gif" })];
+    }
+
+    if (cmd === `${prefix}foxsideb`) {
+        let foxsideb = new Discord.RichEmbed()
+            .setDescription("Fox Illusion Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxsideb.totalFrames)
+            .addField("Fox starts moving away: ", foxFrameData.foxsideb.totalFrames)
+            .addField("Hit Frames: ", foxFrameData.foxsideb.hitFrames)
+            .addField("Time to press B and stop Fox: ", foxFrameData.foxsideb.timeToPressB)
+            .addField("Landlag: ", foxFrameData.foxsideb.landlag)
+            .addField("Landfallspeciallag: ", foxFrameData.foxsideb.landFallSpecialLag);
+        return [message.channel.send(foxsideb), message.channel.send({ file: "./images/foxsideb1.gif" }), message.channel.send({ file: "./images/foxsideb2.gif" })];
+    }
+
+    if (cmd === `${prefix}foxfirefox`) {
+        let foxfirefox = new Discord.RichEmbed()
+            .setDescription("Fox Up-B Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxfirefox.totalFrames)
+            .addField("Hit Frames: ", foxFrameData.foxfirefox.hitFrames)
+            .addField("When to aim: ", foxFrameData.foxfirefox.whenToAim)
+            .addField("Landlag: ", foxFrameData.foxfirefox.landlag)
+            .addField("Landfallspeciallag: ", foxFrameData.foxfirefox.landFallSpecialLag);
+        return [message.channel.send(foxfirefox), message.channel.send({ file: "./images/foxfirefox.gif" })];
+    }
+
+
+    if (cmd === `${prefix}foxspotdodge`) {
+        let foxfirefox = new Discord.RichEmbed()
+            .setDescription("Fox Spotdodge Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/FoxHeadSSBM.png")
+            .addField("Total Frames: ", foxFrameData.foxspotdodge.totalFrames)
+            .addField("Invulnerability: ", foxFrameData.foxspotdodge.involnerable);
+        return [message.channel.send(foxfirefox), message.channel.send({ file: "./images/foxspotdodge.gif" })];
+    }
+
+    if (cmd === `${prefix}toilet`) {
         let sender = message.author;
 
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
 
         let toiletEmbed = new Discord.RichEmbed()
             .setDescription(sender + " flipped the toilet seat " + toilet + "!")
@@ -103,17 +427,29 @@ bot.on("message", async message => {
             .setDescription(sender + " flipped the toilet seat " + toilet + "!")
             .setThumbnail("https://thumb9.shutterstock.com/display_pic_with_logo/137608/107301608/stock-vector-a-white-contemporary-toilet-with-the-seat-down-and-a-directional-arrow-put-the-seat-down-107301608.jpg");
 
-        if (toilet == 'down') {
-            toilet = 'up';
-            message.channel.send(toiletEmbed2);
-        } else
+        let toiletEmbed3 = new Discord.RichEmbed()
+            .setDescription(sender + " fell into the toilet!")
+            .setThumbnail("http://www.wtfcaptcha.com/wp-content/uploads/2010/03/funny-picture-photo-child-toilet-massdistraction-pic.jpg");
 
-        if (toilet == 'up') {
-                toilet = 'down';
-                message.channel.send(toiletEmbed);
+        if (getRandomInt(5) === 4) {
+            message.channel.send(toiletEmbed3);
+        } else {
+            if (toilet == 'down') {
+                toilet = 'up';
+                message.channel.send(toiletEmbed2);
+            } else
+
+                if (toilet == 'up') {
+                    toilet = 'down';
+                    message.channel.send(toiletEmbed);
+                }
         }
+
+
     }
 
 });
+
+
 
 bot.login(botconfig.token);
