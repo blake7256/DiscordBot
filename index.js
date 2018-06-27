@@ -2,7 +2,12 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
 
+//changes username to Sempai
+bot.on("ready", () => {
+    bot.user.setUsername("Sempai");
+});
 
+bot.login("token");
 
 bot.on("ready", async () => {
     //displays in command line
