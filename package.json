@@ -1,0 +1,15 @@
+{
+  "name": "bot1",
+  "version": "1.0.0",
+  "description": "My first discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blake Unnerstall",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "ms": "^2.1.1"
+  }
+}
