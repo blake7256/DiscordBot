@@ -12,7 +12,7 @@ bot.on("ready", async () => {
     //displays in command line
     console.log(`${bot.user.username} is online!`);
     //setting bot's 'Playing _____' on profile
-    bot.user.setActivity("Dolphin");
+    bot.user.setActivity("beep boop haha");
 });
 
 
@@ -507,7 +507,7 @@ bot.on("message", async message => {
 
 
             //.catch(console.error);
-        }, 1 * 9000000); //3600000 1 hour
+        }, 1 * 1000); //3600000 1 hour, 9000000 2.5 hours
 
         return interval;
 
