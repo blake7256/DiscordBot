@@ -12,7 +12,7 @@ bot.on("ready", async () => {
     //displays in command line
     console.log(`${bot.user.username} is online!`);
     //setting bot's 'Playing _____' on profile
-    bot.user.setActivity("beep boop haha");
+    bot.user.setActivity("Honey Select");
 });
 
 
