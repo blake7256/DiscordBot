@@ -12,13 +12,17 @@ bot.on("ready", async () => {
     //displays in command line
     console.log(`${bot.user.username} is online!`);
     //setting bot's 'Playing _____' on profile
-    bot.user.setActivity("Dolphin");
+    bot.user.setActivity("Minecraft");
 });
 
-/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\   
 
-var foxFrameData = {
+
+
+
+/////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////////////// | \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+const foxFrameData = {
     "foxjab": {
         totalFrames: "17",
         IASA: "16",
@@ -134,7 +138,7 @@ var foxFrameData = {
     "foxspotdodge": {
         totalFrames: "22",
         involnerable: "invulnerable 2-15 out of 22"
-    },
+    }
 };
 
 var marthFrameData = {
@@ -149,6 +153,9 @@ var marthFrameData = {
 
 /////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
 
 
 let toilet = 'down';
@@ -181,6 +188,7 @@ bot.on("message", async message => {
     }
 
     if (cmd === `${prefix}commands`) {
+
         let botIcon = bot.user.displayAvatarURL;
         let botEmbed = new Discord.RichEmbed()
             .setDescription("Commands")
@@ -189,20 +197,27 @@ bot.on("message", async message => {
             .addField("!noobdog", "displays: 'noob dog.'")
             .addField("!gamers", "They targeted gamers.")
             .addField("!tim", "tim");
+
         return message.channel.send(botEmbed);
     }
 
     if (cmd === `${prefix}serverinfo`) {
+
         let Sicon = message.guild.iconURL;
         let serverEmbed = new Discord.RichEmbed()
             .setDescription("Server Information")
             .setColor("#23272a")
             .setThumbnail(Sicon)
             .addField("Server name: ", message.guild.name)
+
             .addField("Created on: ", message.guild.createdAt)
+
             .addField("You joined: ", message.member.joinedAt)
+
             .addField("Total members: ", message.guild.memberCount);
+
         return message.channel.send(serverEmbed);
+
     }
 
     if (cmd === `${prefix}foxjab`) {
@@ -419,17 +434,19 @@ bot.on("message", async message => {
         return [message.channel.send(foxfirefox), message.channel.send({ file: "./images/foxspotdodge.gif" })];
     }
 
+    /////////////////////////////////////MARTH/////////////////////////////////////////////////
+
     if (cmd === `${prefix}marthjab1`) {
         let marthjab1 = new Discord.RichEmbed()
             .setDescription("Marth Jab 1 Frame Data")
             .setColor("#23272a")
-            .setThumbnail("https://www.ssbwiki.com/images/d/db/MarthHeadSSBM.png")
+            .setThumbnail("https://www.ssbwiki.com/images/9/9b/MarthHeadSSBM.png")
             .addField("Total Frames: ", marthFrameData.marthjab1.totalFrames)
             .addField("Hit Frames: ", marthFrameData.marthjab1.hitFrames)
             .addField("Window of the second slash: ", marthFrameData.marthjab1.windowOfTheSecondsSlash)
             .addField("Second slash starts: ", marthFrameData.marthjab1.secondSlashStarts)
             .addField("IASA: ", marthFrameData.marthjab1.IASA);
-        return [message.channel.send(marthjab1), message.channel.send({file: "./images/marthjab.gif"})];
+        return [message.channel.send(marthjab1), message.channel.send({file: "./images/marthjab1.gif"})];
     }
 
     if (cmd === `${prefix}toilet`) {
@@ -451,7 +468,7 @@ bot.on("message", async message => {
             .setDescription(sender + " fell into the toilet!")
             .setThumbnail("http://www.wtfcaptcha.com/wp-content/uploads/2010/03/funny-picture-photo-child-toilet-massdistraction-pic.jpg");
 
-        if (getRandomInt(5) === 4) {
+        if (getRandomInt(10) === 9) {
             message.channel.send(toiletEmbed3);
         } else {
             if (toilet == 'down') {
@@ -468,8 +485,34 @@ bot.on("message", async message => {
 
     }
 
+    if (cmd === `${prefix}loopnoobdogg`){
+
+        var interval = setInterval (function(){
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+            if(getRandomInt(3) === 2){
+                message.channel.send("tim");
+                
+            } else if(getRandomInt(3) === 1){
+                message.channel.send("Never thought I'd be writing this...woe is me. So yesterday around 10 pm, I'm chilling at G.E, asking people if they wanna see my cock, aka 90m cash stack. Some bro approaches me and says there's a drop party not too far away, and I just go bonkers. A drop party?? uhhh, Hell Yea!\n\nAnyhoo, I follow this guy to like the cooking guild and he stops..'sorry broo, no drop party, I was actually just trying to hack you lol.'\n\nHack...me..? I thought to myself there's no way this guy would hack me! I'm like unhackable. Next thing you know he's asking for my password! Saying let me hack you lol. No way this dudes a hacker, no way I'm getting hacked bro. only thing getting hacked is my throat after this blunt right lol? So, I give this dude my password. Not hacked. totally knew it. Then when he logs back in, he's like lemme get your 'recov quests' bro, you know just cuz. Just cuz? I see no problem there so I fork over my answers. After that I'm like let's hit this cooking guild bro, and he's like nah man I gotta go g, but before I do, can you log out? I was like sure dude....and here I am. Can't log in...90m cock gone. I'm totally shocked..Never thought this would happen. $11 am I right?");
+            } else {
+                message.channel.send("profane is a noob");
+            }
+
+            //message.channel.send("Noob Dogg.")
+
+
+
+
+            //.catch(console.error);
+        }, 1 * 9000000); //3600000 1 hour
+
+        return interval;
+
+    }
+
 });
-
-
 
 bot.login(botconfig.token);
