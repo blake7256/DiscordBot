@@ -134,14 +134,21 @@ var foxFrameData = {
     "foxspotdodge": {
         totalFrames: "22",
         involnerable: "invulnerable 2-15 out of 22"
-    }
+    },
 };
 
+var marthFrameData = {
+    "marthjab1": {
+        totalFrames: "27",
+        hitFrames: "4-7",
+        windowOfTheSecondsSlash: "3-27",
+        secondSlashStarts: "20",
+        IASA: "26"
+    }
+}
+
 /////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /////////////////////////////////////////////////// DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-
-
 
 
 let toilet = 'down';
@@ -410,6 +417,19 @@ bot.on("message", async message => {
             .addField("Total Frames: ", foxFrameData.foxspotdodge.totalFrames)
             .addField("Invulnerability: ", foxFrameData.foxspotdodge.involnerable);
         return [message.channel.send(foxfirefox), message.channel.send({ file: "./images/foxspotdodge.gif" })];
+    }
+
+    if (cmd === `${prefix}marthjab1`) {
+        let marthjab1 = new Discord.RichEmbed()
+            .setDescription("Marth Jab 1 Frame Data")
+            .setColor("#23272a")
+            .setThumbnail("https://www.ssbwiki.com/images/d/db/MarthHeadSSBM.png")
+            .addField("Total Frames: ", marthFrameData.marthjab1.totalFrames)
+            .addField("Hit Frames: ", marthFrameData.marthjab1.hitFrames)
+            .addField("Window of the second slash: ", marthFrameData.marthjab1.windowOfTheSecondsSlash)
+            .addField("Second slash starts: ", marthFrameData.marthjab1.secondSlashStarts)
+            .addField("IASA: ", marthFrameData.marthjab1.IASA);
+        return [message.channel.send(marthjab1), message.channel.send({file: "./images/marthjab.gif"})];
     }
 
     if (cmd === `${prefix}toilet`) {
