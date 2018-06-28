@@ -493,7 +493,7 @@ bot.on("message", async message => {
             }
 
             if(getRandomInt(5) === 4){
-                message.channel.send("tim");
+                message.channel.send("\:flushed:");
             } else if(getRandomInt(5) === 3){
                 message.channel.send("Never thought I'd be writing this...woe is me. So yesterday around 10 pm, I'm chilling at G.E, asking people if they wanna see my cock, aka 90m cash stack. Some bro approaches me and says there's a drop party not too far away, and I just go bonkers. A drop party?? uhhh, Hell Yea!\n\nAnyhoo, I follow this guy to like the cooking guild and he stops..'sorry broo, no drop party, I was actually just trying to hack you lol.'\n\nHack...me..? I thought to myself there's no way this guy would hack me! I'm like unhackable. Next thing you know he's asking for my password! Saying let me hack you lol. No way this dudes a hacker, no way I'm getting hacked bro. only thing getting hacked is my throat after this blunt right lol? So, I give this dude my password. Not hacked. totally knew it. Then when he logs back in, he's like lemme get your 'recov quests' bro, you know just cuz. Just cuz? I see no problem there so I fork over my answers. After that I'm like let's hit this cooking guild bro, and he's like nah man I gotta go g, but before I do, can you log out? I was like sure dude....and here I am. Can't log in...90m cock gone. I'm totally shocked..Never thought this would happen. $11 am I right?");
             } else if(getRandomInt(5) === 2){
