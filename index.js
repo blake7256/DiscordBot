@@ -507,7 +507,7 @@ bot.on("message", async message => {
 
 
             //.catch(console.error);
-        }, 1 * 1000); //3600000 1 hour, 9000000 2.5 hours
+        }, 1 * 9000000); //3600000 1 hour, 9000000 2.5 hours
 
         return interval;
 
