@@ -7,7 +7,7 @@ The main functionality is being able to display certain messages based on comman
 The main featured commands are the commands that pull from the large data object displayed at the top of index.js. The object contains varying amounts of frame data taken from a video game called Super Smash Brothers Melee. The data is transformed into a nice embed message, containing the data and a .gif image of the specified move, like so: 
 <br />
 <br />
-![alt text](https://s22.postimg.cc/riul46d4h/foxshine.png)
+![alt text](https://s22.postimg.cc/7bh5bxd35/foxshine.png)
 <br />
 <br />
 Although the data only contains information for the character Fox, I may include more or all characters later.
